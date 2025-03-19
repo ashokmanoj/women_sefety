@@ -1,11 +1,4 @@
-/**
- * Project Name: SafeGuard
- * Author: Tharushi Kawodya
- * Email: kawodya.wa@gmail.com
- * Copyright (c) 2025 TK. All rights reserved.
- * Unauthorized copying of this file, via any medium, is strictly prohibited.
- * Licensed under the MIT License.
- */
+
 import React, { useState } from 'react';
 import { AlertCircle } from 'lucide-react';
 import { useSelector } from 'react-redux';
