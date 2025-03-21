@@ -64,3 +64,5 @@ For any queries or contributions, contact:
 
 ---
 ⭐ **If you like this project, give it a star!** ⭐
+
+## You can fork this project and update new logics and new things!... ##
