@@ -1,7 +1,7 @@
 import axios from "axios";
 import AppClient from "../util/AppClient.ts";
 
-const API_BASE_URL = 'http://localhost:5002/api/emergency/';
+const API_BASE_URL = 'https://women-safety-server-side.onrender.com/api/emergency/';
 // const API_BASE_URL = "http://localhost:5002/api/emergency/";
 
 /*export const emergencyApi = {

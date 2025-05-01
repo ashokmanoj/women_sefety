@@ -4,9 +4,9 @@ import Cookies from "js-cookie";
 import AppClient from "../util/AppClient";
 
 // Localhost API
-const API_BASE_URL = 'http://localhost:5002/api/incident/';
+// const API_BASE_URL = 'http://localhost:5002/api/incident/';
 // For production, you can switch to:
-// const API_BASE_URL = 'https://safeguard-5cfr.onrender.com/api/incident/';
+const API_BASE_URL = 'https://women-safety-server-side.onrender.com/api/incident/';
 
 export const incidentApi = {
     // Save a new incident
