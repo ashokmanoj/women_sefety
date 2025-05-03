@@ -11,7 +11,7 @@ export default function LiveLocation() {
   const [error, setError] = useState<string>('');
   const [address, setAddress] = useState<string>('');
 
-  console.log("API Key from env:", import.meta.env.VITE_GEOCODE_API_KEY);
+  // console.log("API Key from env:", import.meta.env.VITE_GEOCODE_API_KEY);
 
   const fetchAddress = async (latitude: number, longitude: number) => {
     try {
@@ -105,7 +105,7 @@ export default function LiveLocation() {
             <span className="font-medium">Longitude:</span> {currentLocation.longitude}
           </p>
           <p className="text-gray-600">
-            <span className="font-medium">Address:</span> {address || 'Fetching address...'}
+            <span className="font-medium">Address:</span> {address || 'Fetching address...'? address : 'Pleace Allow Location Access'}
           </p>
           <p className="text-sm text-gray-500">
             Last updated: {new Date().toLocaleTimeString()}

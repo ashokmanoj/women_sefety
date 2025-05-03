@@ -2,22 +2,29 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { LogOut, Heart, Menu, X } from 'lucide-react';
-import { RootState } from '../store/store';
+import { RootState, AppDispatch } from '../store/store';
 import { clearUser, setUser } from '../store/slices/userSlice';
 import Cookies from "js-cookie";
 
 export default function Header() {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
   const { user } = useSelector((state: RootState) => state.user);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     if (!user) {
-      const userId = Cookies.get('user_id');
-      userId ? dispatch(setUser(userId)) : navigate('/');
+      const id = Cookies.get('user_id');
+      const name = Cookies.get('user_name');
+      const email = Cookies.get('user_email');
+
+      if (id && name && email) {
+        dispatch(setUser({ id, name, email }));
+      } else {
+        navigate('/');
+      }
     }
-  }, []);
+  }, []); // Run only on mount
 
   const handleLogout = () => {
     dispatch(clearUser());
@@ -43,14 +50,13 @@ export default function Header() {
           </span>
         </Link>
 
-        {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
           <Link to="/" className="text-gray-600 hover:text-purple-600">Home</Link>
           {user ? (
             <>
               <Link to="/dashboard" className="text-gray-600 hover:text-purple-600">Dashboard</Link>
               <Link to="/location" className="text-gray-600 hover:text-purple-600">Location</Link>
-              <Link to="/testlocation" className="text-gray-600 hover:text-purple-600">Test Location</Link>
+              {/* <Link to="/testlocation" className="text-gray-600 hover:text-purple-600">Test Location</Link> */}
               <Link to="/report" className="text-gray-600 hover:text-purple-600">Report</Link>
               <Link to="/contacts" className="text-gray-600 hover:text-purple-600">Phone Book</Link>
               <button onClick={handleLogout} className="text-pink-600 hover:text-red-600 flex items-center space-x-1">
@@ -66,22 +72,19 @@ export default function Header() {
           )}
         </nav>
 
-        {/* Mobile Menu Button */}
         <button onClick={toggleMenu} className="md:hidden text-purple-600">
           {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
-      {/* Mobile Menu Dropdown */}
       {isMenuOpen && (
         <div className="md:hidden px-4 pb-4">
           <div className="flex flex-col space-y-2">
-            <Link to="/" className="text-gray-700" onClick={toggleMenu}>Home</Link>
+            <Link to="/" onClick={toggleMenu} className="text-gray-700">Home</Link>
             {user ? (
               <>
                 <Link to="/dashboard" onClick={toggleMenu} className="text-gray-700">Dashboard</Link>
                 <Link to="/location" onClick={toggleMenu} className="text-gray-700">Location</Link>
-                <Link to="/testlocation" onClick={toggleMenu} className="text-gray-700">Test Location</Link>
                 <Link to="/report" onClick={toggleMenu} className="text-gray-700">Report</Link>
                 <Link to="/contacts" onClick={toggleMenu} className="text-gray-700">Phone Book</Link>
                 <button

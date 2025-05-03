@@ -5,13 +5,13 @@ interface Contact {
   name: string;
   phone: string;
   relationship: string;
+  isFavorite?: boolean;
 }
 
 interface User {
   id: string;
   name: string;
   email: string;
-  password: string;
 }
 
 interface UserState {
@@ -40,7 +40,7 @@ const userSlice = createSlice({
     },
     removeContact: (state, action: PayloadAction<string>) => {
       state.trustedContacts = state.trustedContacts.filter(
-          contact => contact.id !== action.payload
+        contact => contact.id !== action.payload
       );
     },
   },

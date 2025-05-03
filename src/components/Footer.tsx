@@ -45,11 +45,11 @@ export default function Footer() {
               <ul className="space-y-2 text-gray-600">
                 <li className="flex items-center space-x-2">
                   <Mail className="h-4 w-4" />
-                  <span>support@safeguard.com</span>
+                  <span>manojha367@gmail.com</span>
                 </li>
                 <li className="flex items-center space-x-2">
                   <MapPin className="h-4 w-4" />
-                  <span>123 Main Street, SriLanka</span>
+                  <span>Hassan, Karnataka</span>
                 </li>
               </ul>
             </div>
