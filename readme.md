@@ -59,7 +59,7 @@ The **Women Safety Application** is a platform designed to enhance safety for wo
 
 ## 🖥️ Backend Repository
 
-The backend code for the  System is available in a separate repository. You can find it [here](https://github.com/kawodyaarachchige/safe-guard-server-side.git)
+The backend code for the  System is available in a separate repository. You can find it [here]
 
 
 ## 📜 License
@@ -67,7 +67,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 For any queries or contributions, contact:
-📧 **kawodya.wa@gmail.com**
+📧 **manojha367@gmail.com**
 
 ---
 ⭐ **If you like this project, give it a star!** ⭐
