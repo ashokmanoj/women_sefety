@@ -1,12 +1,12 @@
 import { Incident } from "../store/slices/incidentSlice";
-import axios from "axios";
+// import axios from "axios";
 import Cookies from "js-cookie";
 import AppClient from "../util/AppClient";
 
 // Localhost API
-// const API_BASE_URL = 'http://localhost:5002/api/incident/';
+const API_BASE_URL = 'http://localhost:5002/api/incident/';
 // For production, you can switch to:
-const API_BASE_URL = 'https://women-safety-server-side.onrender.com/api/incident/';
+// const API_BASE_URL = 'https://women-safety-server-side.onrender.com/api/incident/';
 
 export const incidentApi = {
     // Save a new incident
@@ -17,13 +17,16 @@ export const incidentApi = {
                 headers: { 'Content-Type': 'application/json' },
             });
             return response.data;
-        } catch (error: any) {
-            if (error.response) {
+        } catch (error: unknown) {
+            if (typeof error === "object" && error !== null && "response" in error) {
+                // @ts-expect-error: error may have response property
                 throw new Error(`Server Error: ${error.response.data}`);
-            } else if (error.request) {
+            } else if (typeof error === "object" && error !== null && "request" in error) {
                 throw new Error("No response from server.");
-            } else {
+            } else if (error instanceof Error) {
                 throw new Error(`Error saving incident: ${error.message}`);
+            } else {
+                throw new Error("Error saving incident: Unknown error");
             }
         }
     },
